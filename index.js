@@ -2,22 +2,22 @@
 
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const { GraphQLSchema, GraphQLObjectType, GraphQLID, GraphQLInt,GraphQLString,GraphQLBoolean } = require('graphql');
+const { GraphQLSchema, GraphQLObjectType, GraphQLID, GraphQLInt, GraphQLString, GraphQLBoolean } = require('graphql');
 
 const VideoType = new GraphQLObjectType({
-  name:'Video',
-  description: 'some descki',
-  fields:{
+  name: 'Video',
+  description: 'some description',
+  fields: {
     id: {
-      type:GraphQLID,
+      type: GraphQLID,
       description: 'id of the video'
     },
     title: {
       type: GraphQLString,
       description: 'Title of the video'
     },
-    duration:{
-      type:GraphQLInt,
+    duration: {
+      type: GraphQLInt,
       description: 'The duration of the video (in seconds).',
     },
     watched: {
@@ -29,8 +29,8 @@ const VideoType = new GraphQLObjectType({
 
 const queryType = new GraphQLObjectType({
   name: 'QueryType',
-  description:'rooooooot',
-  fields:{
+  description: 'rooooooot',
+  fields: {
     video: {
       type: VideoType,
       resolve: () => new Promise((resolve) => {
@@ -50,23 +50,23 @@ const schema = new GraphQLSchema({
 })
 
 const resolvers = {
-  video:()=>({
+  video: () => ({
     id: '1aec',
-    title:  'bar',
-    duration:180,
+    title: 'bar',
+    duration: 180,
     watched: true,
   }),
   videos: () => [{
     id: '1aec',
-    title:  'bar',
-    duration:180,
+    title: 'bar',
+    duration: 180,
     watched: true,
-  },{
+  }, {
     id: '2aec',
-      title: 'b2ar',
-    duration:280,
+    title: 'b2ar',
+    duration: 280,
     watched: true,
-  }]  
+  }]
 };
 
 const server = express();
