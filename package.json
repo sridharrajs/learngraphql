@@ -13,5 +13,19 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
-  }
+  },
+  "description": "A sample app experimenting with GraphQL.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sridharrajs/learngraphql.git"
+  },
+  "keywords": [
+    "graphql",
+    "node"
+  ],
+  "author": "sridharrajs",
+  "bugs": {
+    "url": "https://github.com/sridharrajs/learngraphql/issues"
+  },
+  "homepage": "https://github.com/sridharrajs/learngraphql#readme"
 }
