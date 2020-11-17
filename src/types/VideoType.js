@@ -23,4 +23,4 @@ const VideoType = new GraphQLObjectType({
   }
 });
 
-module.export = { VideoType };
+module.exports = { VideoType };

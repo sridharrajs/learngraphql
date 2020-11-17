@@ -20,4 +20,4 @@ const queryType = new GraphQLObjectType({
   }
 });
 
-module.export = { queryType };
+module.exports = { queryType };
