@@ -1,23 +1,17 @@
 'use strict';
 
-const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
-const { GraphQLSchema } = require('graphql');
+const chalk = require('chalk');
+const dotEnv = require('dotenv').config();
 
-const { queryType } = require('./src/types/queryType');
-const { resolvers } = require('./src/resolvers');
+const { assertEnvironment } = require('./bin/utils');
+const { connectDb } = require('./src/db');
+const server = require('./bin/server');
 
-const PORT = process.env.PORT || 9000;
-
-const server = express();
-server.use('/graphql', graphqlHTTP({
-  schema: new GraphQLSchema({
-    query: queryType
-  }),
-  graphiql: true,
-  rootValue: resolvers,
-}));
-
-server.listen(PORT, () => {
-  console.log(`Listening on http://localhost:${PORT}/graphql`);
+assertEnvironment(dotEnv).then(() => {
+  return connectDb();
+}).then(() => {
+  return server.start();
+}).catch((reason) => {
+  console.trace(chalk.red(reason.stack));
+  process.exit(0);
 });
