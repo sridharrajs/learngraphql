@@ -4,9 +4,12 @@ const db = mongoose;
 const { MONGO_CONNECTION_URL } = process.env;
 
 const connectDb = () => new Promise((resolve, reject) => {
-  db.connect(MONGO_CONNECTION_URL);
+  db.connect(MONGO_CONNECTION_URL, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  });
   db.connection.once('open', () => {
-    console.log('connected to database');
+    console.log('Connecting to database - ✅');
     return resolve();
   }).on('err', () => reject());
 });

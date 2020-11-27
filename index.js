@@ -11,7 +11,7 @@ assertEnvironment(dotEnv).then(() => {
   return connectDb();
 }).then(() => {
   return server.start();
-}).catch((reason) => {
-  console.trace(chalk.red(reason.stack));
+}).catch(reason => {
+  console.trace(chalk.red(reason));
   process.exit(0);
 });
